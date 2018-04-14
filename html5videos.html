@@ -10,6 +10,12 @@
 <script src = "includes/currentTimeWorker.js"></script>
 <script src = "includes/localStorage.js"></script>
 
+<script>
+	$(document).ready(function(){
+		startWorker();
+	});
+</script>
+
 </head>
 
 <body>
@@ -48,8 +54,8 @@
     </div>
 
     <p>Current Time: <output id="currentTime"></output></p>
-    <!--<button onclick="startWorker()">Start Worker</button> 
-    <button onclick="stopWorker()">Stop Worker</button>-->
+    <!--<button onclick="startWorker()" id="start" style="display: none;">Start Worker</button> 
+    <!--<button onclick="stopWorker()">Stop Worker</button>-->
 
     <form id="localStorageTest" method="post" action="">
         <label>Name:</label>

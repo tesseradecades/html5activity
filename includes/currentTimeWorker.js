@@ -3,7 +3,7 @@ var w;
 function startWorker() {
     if(typeof(Worker) !== "undefined") {
         if(typeof(w) == "undefined") {
-            w = new Worker("demo_workers.js");
+            w = new Worker("includes/demo_workers.js");
         }
         w.onmessage = function(event) {
             document.getElementById("currentTime").innerHTML = event.data;
@@ -17,6 +17,9 @@ function stopWorker() {
     w.terminate();
     w = undefined;
 }
+
+/*
 $(document).ready(function(){
+	var w;
     startWorker();
-});
+});*/
