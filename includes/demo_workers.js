@@ -1,10 +1,6 @@
-var i;
-
-var d = new Date();
-
+var i = new Date().toLocaleTimeString();
 function timedCount() {
-    //i=i+1;
-    i = d.toLocaleTimeString();
+    i = new Date().toLocaleTimeString();
     postMessage(i);
     setTimeout("timedCount()", 500);
 }
