@@ -6,80 +6,63 @@
   src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
   integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
   crossorigin="anonymous"></script>
-<script>
-    $(document).ready(function(){
-
-        var c = document.getElementById("myCanvas");
-        var ctx = c.getContext("2d");
-        ctx.moveTo(0, 0);
-        ctx.lineTo(200, 100);
-        ctx.stroke();
-    });
-    
-    var w;
-
-    function startWorker() {
-        if(typeof(Worker) !== "undefined") {
-            if(typeof(w) == "undefined") {
-                w = new Worker("includes/demo_workers.js");
-            }
-            w.onmessage = function(event) {
-                document.getElementById("result").innerHTML = event.data;
-            };
-        } else {
-            document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Workers...";
-        }
-    }
-
-    function stopWorker() { 
-        w.terminate();
-        w = undefined;
-    }
-
-</script>
+<script src = "includes/canvasScript.js"></script>
+<script src = "includes/currentTimeWorker.js"></script>
+<script src = "includes/localStorage.js"></script>
 
 </head>
 
 <body>
 
 
-<!-- ******************************************* Videos **************************--> 
+    <!-- ******************************************* Videos **************************--> 
 
-<h1>HTML Videos</h1>
+    <h1>HTML Videos</h1>
 
-<!--
-	These two examples show how to include a video in html4 and html5.
--->
+    <!--
+        These two examples show how to include a video in html4 and html5.
+    -->
 
-HTML5
-<!-- HTML5 way -->
-<video width="320" height="240" controls>
-  <source src="includes/pirateCat.mp4" type="video/mp4">
-  <source src="movie.ogg" type="video/ogg">
-Your browser does not support the video tag.
-</video>
+    HTML5
+    <!-- HTML5 way -->
+    <video width="320" height="240" controls>
+    <source src="includes/pirateCat.mp4" type="video/mp4">
+    <source src="movie.ogg" type="video/ogg">
+    Your browser does not support the video tag.
+    </video>
 
-<br />
-<!--
-<audio controls>
-    <source src="horse.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
-</audio>-->
-<br />
+    <br />
+    <!--
+    <audio controls>
+        <source src="horse.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>-->
+    <br />
 
-<canvas id="myCanvas" width="200" height="100" style="border:1px solid #000000;">
-</canvas>
-Your Name: <input type="text" name="name" required>
+    <canvas id="myCanvas" width="200" height="100" style="border:1px solid #000000;">
+    </canvas>
+    Your Name: <input type="text" name="name" required>
 
-<div contenteditable="true">
-    This text can be edited by the user.
-  </div>
+    <div contenteditable="true">
+        This text can be edited by the user.
+    </div>
+
+    <p>Current Time: <output id="currentTime"></output></p>
+    <!--<button onclick="startWorker()">Start Worker</button> 
+    <button onclick="stopWorker()">Stop Worker</button>-->
+
+    <form id="localStorageTest" method="post" action="">
+        <label>Name:</label>
+        <input type="text" name="name" id="name" class="stored" value="" />
+    
+        <label>Email:</label>
+        <input type="email" name="email" id="email" class="stored" value="" />
+    
+        <label>Message:</label>
+        <textarea name="message" id="message" class="stored"></textarea>
+    
+        <input type="submit" class="demo-button" value="Clear Local Storage" />
+    </form>
 </body>
-<p>Count numbers: <output id="result"></output></p>
-<button onclick="startWorker()">Start Worker</button> 
-<button onclick="stopWorker()">Stop Worker</button>
-
-<p><strong>Note:</strong> Internet Explorer 9 and earlier versions do not support Web Workers.</p>
-
 
 </html>
